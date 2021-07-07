@@ -1,0 +1,91 @@
+table
+  width: 1000px
+
+.mat-row
+  .mat-cell
+    border-bottom: 1px solid transparent
+    border-top: 1px solid transparent
+    cursor: pointer
+
+
+.mat-row
+  // background-color: #69F0AE
+  &:hover
+    .mat-cell
+      border-color: currentColor
+      background-color: palevioletred
+      cursor: pointer
+      color: aliceblue
+
+.demo-row-is-clicked
+  font-weight: bold
+
+.mat-form-field
+  font-size: 14px
+  width: 500px
+  background-color: azure
+
+/* Expanded Table */
+
+.example-detail-row
+    height: 0px
+
+tr
+  .example-element-row
+    &:not(.example-expanded-row)
+      &:hover
+        background: whitesmoke
+
+.example-expanded-row
+  background-color: #69F0AE
+  &:hover
+    background: blueviolet
+
+tr
+  .example-element-row
+    &:not(.example-expanded-row)
+      &:active
+        background: #efefef
+
+.example-element-row
+  td
+    border-bottom-width: 0
+
+.expandedDetail
+  background-color: #40C4FF
+
+.example-element-detail
+  overflow: hidden
+  display: flex
+  background-color: #40C4FF
+  justify-content: space-around
+  &:hover
+    background: #673ab7
+  div
+    &:not(.example-element-diagram)
+      display: flex
+      width: 100px
+      vertical-align: bottom
+      margin-bottom: 8px
+      button
+        align-self: flex-end
+        vertical-align: bottom
+
+.example-element-diagram
+  min-width: 80px
+  border: 2px solid black
+  padding: 10px
+  font-weight: lighter
+  margin: 8px 0
+  height: 120px
+
+.example-element-symbol
+  font-weight: bold
+  font-size: 40px
+  line-height: normal
+
+.example-element-description
+  padding: 16px
+
+.example-element-description-attribution
+  opacity: 0.5

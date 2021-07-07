@@ -1,0 +1,95 @@
+<div style="background-color: azure; display: flex; justify-content: space-around; padding-top: 5px;">
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  <span style="width:400px"></span>
+  <button mat-fab color="primary" aria-label="Example icon-button with a heart icon" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram">
+          <div class="example-element-position"> {{element.position}} </div>
+          <div class="example-element-symbol"> {{element.symbol}} </div>
+          <div class="example-element-name"> {{element.name}} </div>
+          <div class="example-element-weight"> {{element.weight}} </div>
+        </div>
+        <span></span>
+        <div style="vertical-align: middle; float: right;">
+          <button mat-raised-button color="warn" (click)="deleteRecord(element)">Delete</button>
+        </div>
+
+        <!-- <div class="example-element-description">
+          {{element.description}}
+          <span class="example-element-description-attribution"> -- Wikipedia </span>
+        </div> -->
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<!-- <div class="mat-elevation-z8">
+  <div style="background-color: azure; flex: content; align-content: flex-start;">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <span style="width:1500px"></span>
+    <button mat-fab color="primary" aria-label="Example icon-button with a heart icon" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="demo-table">
+
+    Position Column
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    Name Column
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    Weight Column
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    Symbol Column
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div> -->

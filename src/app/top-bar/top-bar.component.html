@@ -1,0 +1,39 @@
+<!-- <p> -->
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Tournament Details</span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button> -->
+  </mat-toolbar>
+<!-- </p> -->
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <!-- <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button> -->
+    <mat-selection-list class="sidenav-options" #sideNavSelect [multiple]="false">
+      <!-- <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+        {{shoe}}
+      </mat-list-option> -->
+      <mat-list-option><mat-icon matListIcon>home</mat-icon>Home</mat-list-option>
+      <mat-list-option><mat-icon matListIcon>group_add</mat-icon>Tournament</mat-list-option>
+      <mat-list-option><mat-icon matListIcon>add_circle</mat-icon>Event</mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button> -->
+    <app-app-details></app-app-details>
+  </div>
+
+</mat-drawer-container>
